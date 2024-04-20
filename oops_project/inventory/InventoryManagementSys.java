@@ -8,8 +8,8 @@ import items.*;
 
 public class InventoryManagementSys implements InventoryManagementInterface {
 
-    List<Product> products;
-    List<Employee> employees;
+    public List<Product> products = new ArrayList<Product>();
+    public List<Employee> employees = new ArrayList<Employee>();
 
     public void addProduct(Product product) throws CustomException {
 
@@ -36,7 +36,7 @@ public class InventoryManagementSys implements InventoryManagementInterface {
     }
 
     public void addEmployee(Employee employee) throws CustomException {
-        if (employees.contains(employee)) {
+        if (!(employees == null) && employees.contains(employee)) {
             throw new CustomException.Duplicate("Employee already exists", null);
         }
         employees.add(employee);
@@ -44,7 +44,7 @@ public class InventoryManagementSys implements InventoryManagementInterface {
 
     public void addEmployee(Employee... employees) throws CustomException {
         for (Employee e : employees) {
-            if (this.employees.contains(e)) {
+            if (!(employees == null) && this.employees.contains(e)) {
                 throw new CustomException.Duplicate("Employee already exists", null);
             }
             this.employees.add(e);
@@ -61,7 +61,7 @@ public class InventoryManagementSys implements InventoryManagementInterface {
             if (products.contains(product)) {
                 for (Product p : products) {
                     if (product.getProductId() == p.getProductId()) {
-                        product.setQuantity(product.getQuantity());
+                        p.setQuantity(product.getQuantity());
                     }
                 }
 
@@ -145,7 +145,8 @@ public class InventoryManagementSys implements InventoryManagementInterface {
                                 " productID: " + Integer.toString(e.getProductId()) +
                                 " Price: " + Double.toString(e.getprice()) +
                                 " Discount: " + Double.toString(e.getDiscount()) +
-                                " DiscountedPrice: " + Double.toString(e.getDiscountedValue()));
+                                " DiscountedPrice: " + Double.toString(e.getDiscountedValue()) +
+                                "quantity: " + Integer.toString(e.getQuantity()) + "\n");
                     }
                     writer.close();
                     try {
@@ -192,7 +193,7 @@ public class InventoryManagementSys implements InventoryManagementInterface {
                                 " Salary: " + Double.toString(e.salary) +
                                 " Role: " + (String) e.getRole() +
                                 " Joining Date: " + (String) e.getJoiningDate() +
-                                " level: " + Integer.toString(e.getLevel()));
+                                " level: " + Integer.toString(e.getLevel()) + "\n");
                     }
                     writer.close();
                 }
