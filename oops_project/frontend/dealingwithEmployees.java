@@ -20,7 +20,7 @@ public class dealingwithEmployees {
 
         System.out.println("Enter the type of employee: ");
         String type = (sc.nextLine()).toLowerCase();
-        System.out.println("Enter the name of the product: ");
+        System.out.println("Enter the name of the employee: ");
         name = sc.nextLine();
         System.out.println("Enter the employeeId: ");
         employeeId = Integer.parseInt(sc.nextLine());
