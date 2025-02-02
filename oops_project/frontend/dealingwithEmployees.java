@@ -22,7 +22,7 @@ public class dealingwithEmployees {
         String type = (sc.nextLine()).toLowerCase();
         System.out.println("Enter the name of the product: ");
         name = sc.nextLine();
-        System.out.println("Enter the productId: ");
+        System.out.println("Enter the employeeId: ");
         employeeId = Integer.parseInt(sc.nextLine());
         System.out.println("Enter the Joining Date: ");
         JoiningDate = sc.nextLine();
